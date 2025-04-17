@@ -22,7 +22,11 @@ fun  TodoNavHost(){
     val navController = rememberNavController()
     NavHost(navController =  navController, startDestination = ListRoute) {
         composable<ListRoute> {
-            ListScreen()
+            ListScreen(
+                navigateToAddEditScreen = {id ->
+                    navController.navigate(AddEditRoute(id = id))
+                }
+            )
         }
         composable<AddEditRoute> { backStackEntry ->
             val addEditRoute = backStackEntry.toRoute<AddEditRoute>()
