@@ -14,11 +14,11 @@ interface TodoDao {
     suspend fun insert(entity: TodoEntity)
 
     @Delete
-    suspend fun  delete(entity: TodoEntity)
+    suspend fun delete(entity: TodoEntity)
 
     @Query("SELECT * FROM todos")
     fun getAll(): Flow<List<TodoEntity>>
 
-    @Query ("SELECT * FROM todos WHERE id = :id")
-    suspend fun getBy(id: Long): TodoEntity
+    @Query("SELECT * FROM todos WHERE id = :id")
+    suspend fun getBy(id: Long): TodoEntity?
 }

@@ -10,6 +10,7 @@ import androidx.room.RoomDatabase
     version = 1,
 )
 abstract class TodoDatabase : RoomDatabase() {
+
     abstract val todoDao: TodoDao
 }
 
@@ -18,7 +19,7 @@ object TodoDatabaseProvider {
     @Volatile
     private var INSTANCE: TodoDatabase? = null
 
-    fun getDatabase(context: Context): TodoDatabase {
+    fun provide(context: Context): TodoDatabase {
         return INSTANCE ?: synchronized(this) {
             val instance = Room.databaseBuilder(
                 context.applicationContext,
